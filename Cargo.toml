@@ -1,0 +1,15 @@
+[package]
+name = "jwt-authentication"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+name = "jwt_authentication_lib"
+doc = true
+path = "src/lib.rs"
+
+[dependencies]
+axum = {version = "0.8.0-alpha.1", features = ["tower-log", "tokio"]}
+serde = "1.0.215"
+sqlx = {version = "0.8.2", features = ["sqlx-macros", "runtime-tokio"]}
+
