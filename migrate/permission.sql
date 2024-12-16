@@ -1,0 +1,1 @@
+CREATE TYPE permission AS ENUM ( 'user', 'admin' );
