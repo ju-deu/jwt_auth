@@ -3,12 +3,11 @@ mod user {
     mod register;
     mod authorize;
     mod login;
-    
     mod reset_password {
         mod initialize;
         mod reset;
     }
-    mod model;
+    pub(crate) mod model;
 }
 
 mod utils {
@@ -20,4 +19,8 @@ mod utils {
         mod password;
         mod username;
     }
+}
+
+mod buckets {
+    mod bucket;
 }
