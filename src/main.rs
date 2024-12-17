@@ -2,7 +2,6 @@ use axum::routing::{get, post};
 use axum::Router;
 use sqlx::postgres::PgPool;
 use std::sync::{Arc, Mutex};
-use axum::handler::Handler;
 use jwt_authentication_lib::{buckets::bucket::*, user, utils::appstate::AppState};
 
 #[tokio::main]
@@ -20,18 +19,17 @@ async fn main() {
     let password_bucket = Arc::new(Mutex::new(PasswordBucket::new()));
     let user_bucket = Arc::new(Mutex::new(UsersBucket::new()));
 
-    let AppState = AppState {
+    let app_state = Arc::new(AppState {
         db_pool: shared_pool,
         user_bucket,
         password_bucket,
-    };
+    });
     
     
     // make app
     let app = Router::new()
         .route("/ping", get(|| async { "Hello, World!" }))
-        //.route("/test", get(test)).with_state(shared_pool.clone())
-        //.route("/test", post(user::new::new)).with_state()
+        .route("/test", post(user::new::new)).with_state(app_state)
     ;
 
     // serve on 0.0.0.0:8000

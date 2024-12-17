@@ -1,26 +1,27 @@
-mod user {
-    mod new;
-    mod register;
-    mod authorize;
-    mod login;
-    mod reset_password {
-        mod initialize;
-        mod reset;
+pub mod user {
+    pub mod new;
+    pub mod register;
+    pub mod authorize;
+    pub mod login;
+    pub mod reset_password {
+        pub mod initialize;
+        pub mod reset;
     }
-    pub(crate) mod model;
+    pub mod model;
 }
 
-mod utils {
-    mod mail {
-        mod register;
-        mod password_reset;
+pub mod utils {
+    pub mod mail {
+        pub mod register;
+        pub mod password_reset;
     }
-    mod validate {
-        mod password;
-        mod username;
+    pub mod validate {
+        pub mod password;
+        pub mod username;
     }
+    pub mod appstate;
 }
 
-mod buckets {
-    mod bucket;
+pub mod buckets {
+    pub mod bucket;
 }
