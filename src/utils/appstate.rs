@@ -1,4 +1,5 @@
-use std::sync::{Arc, Mutex};
+use tokio::sync::Mutex;
+use std::sync::Arc;
 use sqlx::{Pool, Postgres};
 use crate::buckets::bucket::{PasswordBucket, UsersBucket};
 
