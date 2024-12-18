@@ -2,6 +2,7 @@
 // - check for legal chars
 // - check for sql injections
 
+
 use std::error::Error;
 use regex::Regex;
 
