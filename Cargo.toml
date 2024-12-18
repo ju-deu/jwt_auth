@@ -11,10 +11,11 @@ path = "src/lib.rs"
 [dependencies]
 axum = { version = "0.8.0-alpha.1", features = ["tower-log", "tokio", "macros"] }
 serde = { version = "1.0.215", features = ["derive"] }
-sqlx = { version = "0.8.2", features = ["sqlx-macros", "runtime-tokio", "postgres", "sqlx-postgres"] }
+sqlx = { version = "0.8.2", features = ["sqlx-macros", "runtime-tokio", "postgres", "sqlx-postgres", "macros"] }
 tokio = { version = "1.42.0", features = ["rt-multi-thread", "macros"] }
 dotenv = { version = "0.15.0" }
 uuid = { version = "1.11.0", features = ["serde", "v4"] }
 argon2 = "0.5.3"
 chrono = { version = "0.4.39", features = ["serde"] }
+regex = { version = "1.11.1" }
 rand = { version = "0.8.5", features = ["serde"] }

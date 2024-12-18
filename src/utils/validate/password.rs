@@ -11,9 +11,11 @@ use regex::Regex;
 /// - Must include at least 1 uppercase and 1 lowercase letter
 /// - Must include at least 1 number/digit
 pub fn is_valid_password(password: &String) -> Result<(bool, &str), Box< dyn Error>> {
+    // check for password length
     if password.len() < 8 || password.len() > 30 {
         return Ok((false, "Length not in bounds: (8..=30)"))
     }
+    
     // match regex
     let allowed_chars = Regex::new(r"^[A-Za-z\d@$!%*?&~#+/_]+$")?.is_match(password);
     let lowercase = Regex::new(r"[a-z]")?.is_match(password);

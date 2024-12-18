@@ -1,7 +1,8 @@
 use axum::routing::{get, post};
 use axum::Router;
 use sqlx::postgres::PgPool;
-use std::sync::{Arc, Mutex};
+use std::sync::Arc;
+use tokio::sync::Mutex;
 use jwt_authentication_lib::{buckets::bucket::*, user, utils::appstate::AppState};
 
 #[tokio::main]
@@ -29,7 +30,7 @@ async fn main() {
     // make app
     let app = Router::new()
         .route("/ping", get(|| async { "Hello, World!" }))
-        .route("/test", post(user::new::new)).with_state(app_state)
+        .route("/v1/new_user", post(user::new::new)).with_state(app_state)
     ;
 
     // serve on 0.0.0.0:8000

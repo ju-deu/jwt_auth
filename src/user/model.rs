@@ -9,11 +9,11 @@ pub enum Permission { User, Admin }
 
 #[derive(Serialize, Deserialize, Debug)]
 pub struct NewUser {
-    uuid: Uuid,
-    username: String,
-    email: String,
-    password: String,
-    code: u32,
+    pub uuid: Uuid,
+    pub username: String,
+    pub email: String,
+    pub password: String,
+    pub code: u32,
 }
 impl NewUser {
     pub fn from(uuid: Uuid, username: String, email: String, password: String, code: u32) -> Self {
@@ -24,30 +24,30 @@ impl NewUser {
 }
 
 
-#[derive(Serialize, Deserialize)]
+#[derive(Serialize, Deserialize, sqlx::FromRow)]
 pub struct User {
-    uuid: Uuid,
-    username: String,
-    email: String,
-    password: String,
+    pub uuid: Uuid,
+    pub username: String,
+    pub email: String,
+    pub  password: String,
 
-    permission: Permission,
-    tokenversion: u64,
-    
-    issued_at: u64
+    pub permission: Permission,
+    pub tokenversion: u64,
+
+    pub issued_at: u64
 }
 
 #[derive(Serialize, Deserialize, Clone, Debug)]
 pub struct Code {
     pub(crate) code: u32,
-    sub: Uuid,
-    iat: u64,
-    exp: u64,
+    pub sub: Uuid,
+    pub iat: u64,
+    pub exp: u64,
 }
 
 impl Code {
     pub fn is_expired(&self) -> bool {
-        let current_time = chrono::Utc::now().timestamp() as u64;
+        let current_time = Utc::now().timestamp() as u64;
         if current_time >= self.exp {
             return true
         }
